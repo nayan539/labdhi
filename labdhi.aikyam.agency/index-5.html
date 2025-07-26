@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Responsive Sidebar Menu</title>
+<style>
+  /* === Big screen navbar (your original design) === */
+  @media(min-width: 992px) {
+    #navbar {
+      display: block !important;
+    }
+    #sidebarMobile,
+    #sidebarOpenBtn {
+      display: none !important;
+    }
+  }
+
+  /* === Small screen: hide big navbar */
+  @media(max-width: 991px) {
+    #navbar {
+      display: none !important;
+    }
+    #sidebarOpenBtn {
+      display: inline-block;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      z-index: 1101;
+      font-size: 16px;
+    }
+  }
+
+  /* === Sidebar styles === */
+  #sidebarMobile {
+    position: fixed;
+    top: 0;
+    right: -50%;
+    width: 50%;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -3px 0 10px rgba(0,0,0,0.2);
+    overflow-y: auto;
+    transition: right 0.3s ease;
+    z-index: 1100;
+    padding: 20px 10px 20px 20px;
+  }
+
+  #sidebarMobile.active {
+    right: 0;
+  }
+
+  /* Close button half inside half outside */
+  #sidebarCloseBtn {
+    position: absolute;
+    top: 20px;
+    left: -25px;
+    width: 40px;
+    height: 40px;
+    background: #000;
+    color: #fff;
+    font-size: 28px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: 38px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    z-index: 1200;
+  }
+
+  /* Menu styling */
+  #sidebarMobile ul.nav {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 60px;
+  }
+
+  #sidebarMobile ul.nav li {
+    border-bottom: 1px solid #ddd;
+  }
+
+  #sidebarMobile ul.nav li > a {
+    display: block;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  /* Add arrow for submenu */
+  #sidebarMobile li.menu-item-has-children > a::after {
+    content: " ▼";
+    float: right;
+    font-size: 0.7em;
+  }
+
+  /* Submenu hidden by default */
+  #sidebarMobile ul.sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    padding-left: 15px;
+  }
+
+  /* Submenu expanded */
+  #sidebarMobile li.menu-item-has-children.active > ul.sub-menu {
+    max-height: 1000px; /* big enough to show all */
+  }
+
+  /* Submenu links */
+  #sidebarMobile ul.sub-menu li a {
+    padding-left: 15px;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* Prevent body scroll when sidebar open */
+  body.sidebar-open {
+    overflow: hidden;
+  }
+</style>
+</head>
+<body>
+
+<!-- Your big screen navbar (unchanged) -->
+<div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
+  <ul class="nav navbar-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li class="menu-item-has-children">
+      <a href="#">Products</a>
+      <ul class="sub-menu">
+        <li class="menu-item-has-children">
+          <a href="Machining-Work.html">Machining Work</a>
+          <ul class="sub-menu">
+            <li><a href="Gear-Manufacturing.html">Gear Manufacturing</a></li>
+            <li><a href="Shaft-Manufacturing.html">Shaft Manufacturing</a></li>
+            <li><a href="Pulley.html">Pulley</a></li>
+            <li><a href="Timing-Belt-Pulley.html">Timing Belt Pulley</a></li>
+            <li><a href="Bracket.html">Bracket</a></li>
+            <li><a href="Spocket-Wheel.html">Spocket Wheel</a></li>
+            <li><a href="Dye-Moulding-Item.html">Dye Moulding Item</a></li>
+            <li><a href="Customised-Bolt.html">Customised Bolt</a></li>
+            <li><a href="Cyclone-Gear.html">Cyclone Gear</a></li>
+            <li><a href="Rack-Gear.html">Rack Gear</a></li>
+            <li><a href="Fabrication-Items.html">Fabrication Items</a></li>
+            <li><a href="Coating-Item.html">Coating Item</a></li>
+            <li><a href="Varum-Gear.html">Varum Gear</a></li>
+          </ul>
+        </li>
+        <li><a href="Qrc-Nrv.html">QRC and NRV</a></li>
+        <li><a href="Tube-Fittings.html">Tube Fitting</a></li>
+        <li><a href="Needle-Valve.html">Needle Valve</a></li>
+        <li><a href="Solenoid-Valve.html">Solenoid Valve</a></li>
+        <li><a href="Pneumatic-Fittings.html">Pneumatic Fittings</a></li>
+        <li><a href="Pipe-Fittings.html">Pipe Fittings</a></li>
+        <li><a href="Pressure-Gauges.html">Pressure Gauges</a></li>
+        <li><a href="Pressure-Switch.html">Pressure Switch</a></li>
+        <li><a href="Burner-Spare.html">Burner Spare Parts</a></li>
+        <li><a href="Gas-Safety-Regulators.html">Gas Safety Regulators</a></li>
+        <li><a href="Lubricator-Air-Filter-Regulator.html">Lubricator Air Filter Regulator</a></li>
+        <li><a href="Pneumatic-Accessories.html">Pneumatic Accessories</a></li>
+      </ul>
+    </li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+
+<!-- Sidebar toggle button visible only on small screens -->
+<button id="sidebarOpenBtn" aria-label="Open menu" title="Open menu">☰ Menu</button>
+
+<!-- Sidebar menu for mobile -->
+<div class="sidebar-mobile" id="sidebarMobile" aria-hidden="true" tabindex="-1">
+  <button id="sidebarCloseBtn" aria-label="Close menu" title="Close menu">&times;</button>
+  <ul class="nav navbar-nav flex-column">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li class="menu-item-has-children">
+      <a href="#" class="has-submenu">Products</a>
+      <ul class="sub-menu">
+        <li class="menu-item-has-children">
+          <a href="#" class="has-submenu">Machining Work</a>
+          <ul class="sub-menu">
+            <li><a href="Gear-Manufacturing.html">Gear Manufacturing</a></li>
+            <li><a href="Shaft-Manufacturing.html">Shaft Manufacturing</a></li>
+            <li><a href="Pulley.html">Pulley</a></li>
+            <li><a href="Timing-Belt-Pulley.html">Timing Belt Pulley</a></li>
+            <li><a href="Bracket.html">Bracket</a></li>
+            <li><a href="Spocket-Wheel.html">Spocket Wheel</a></li>
+            <li><a href="Dye-Moulding-Item.html">Dye Moulding Item</a></li>
+            <li><a href="Customised-Bolt.html">Customised Bolt</a></li>
+            <li><a href="Cyclone-Gear.html">Cyclone Gear</a></li>
+            <li><a href="Rack-Gear.html">Rack Gear</a></li>
+            <li><a href="Fabrication-Items.html">Fabrication Items</a></li>
+            <li><a href="Coating-Item.html">Coating Item</a></li>
+            <li><a href="Varum-Gear.html">Varum Gear</a></li>
+          </ul>
+        </li>
+        <li><a href="Qrc-Nrv.html">QRC and NRV</a></li>
+        <li><a href="Tube-Fittings.html">Tube Fitting</a></li>
+        <li><a href="Needle-Valve.html">Needle Valve</a></li>
+        <li><a href="Solenoid-Valve.html">Solenoid Valve</a></li>
+        <li><a href="Pneumatic-Fittings.html">Pneumatic Fittings</a></li>
+        <li><a href="Pipe-Fittings.html">Pipe Fittings</a></li>
+        <li><a href="Pressure-Gauges.html">Pressure Gauges</a></li>
+        <li><a href="Pressure-Switch.html">Pressure Switch</a></li>
+        <li><a href="Burner-Spare.html">Burner Spare Parts</a></li>
+        <li><a href="Gas-Safety-Regulators.html">Gas Safety Regulators</a></li>
+        <li><a href="Lubricator-Air-Filter-Regulator.html">Lubricator Air Filter Regulator</a></li>
+        <li><a href="Pneumatic-Accessories.html">Pneumatic Accessories</a></li>
+      </ul>
+    </li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+
+<script>
+  const sidebar = document.getElementById('sidebarMobile');
+  const openBtn = document.getElementById('sidebarOpenBtn');
+  const closeBtn = document.getElementById('sidebarCloseBtn');
+
+  // Open sidebar
+  openBtn.addEventListener('click', () => {
+    sidebar.classList.add('active');
+    sidebar.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('sidebar-open');
+    sidebar.focus();
+  });
+
+  // Close sidebar
+  closeBtn.addEventListener('click', () => {
+    sidebar.classList.remove('active');
+    sidebar.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('sidebar-open');
+  });
+
+  // Submenu toggling
+  sidebar.querySelectorAll('li.menu-item-has-children > a.has-submenu').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      const parentLi = anchor.parentElement;
+      const isActive = parentLi.classList.contains('active');
+      // Close all siblings
+      parentLi.parentElement.querySelectorAll('li.menu-item-has-children').forEach(li => {
+        if(li !== parentLi) li.classList.remove('active');
+      });
+      // Toggle current
+      if (isActive) {
+        parentLi.classList.remove('active');
+      } else {
+        parentLi.classList.add('active');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sliding Logos One-by-One</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .logo-slider-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .logo-slider {
+      display: flex;
+      gap: 30px;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .logo-slide {
+      flex: 0 0 auto;
+      width: 25%; /* 4 logos on large screens */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-slide img {
+      max-height: 80px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    @media (max-width: 768px) {
+      .logo-slide {
+        width: 50%; /* 2 logos per view on small screens */
+      }
+    }
+
+    @media (max-width: 576px) {
+      .logo-slide {
+        width: 100%; /* 1 logo per view on very small screens */
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container my-5">
+  <h3 class="text-center mb-4">Our Partners</h3>
+
+  <div class="logo-slider-wrapper">
+    <div class="logo-slider" id="logoSlider">
+      <!-- Logos -->
+      <div class="logo-slide"><img src="./partners/" alt="Logo 1"></div>
+      <div class="logo-slide"><img src="https://via.placeholder.com/200x100?text=Logo+2" alt="Logo 2"></div>
+      <div class="logo-slide"><img src="https://via.placeholder.com/200x100?text=Logo+3" alt="Logo 3"></div>
+      <div class="logo-slide"><img src="https://via.placeholder.com/200x100?text=Logo+4" alt="Logo 4"></div>
+      <div class="logo-slide"><img src="https://via.placeholder.com/200x100?text=Logo+5" alt="Logo 5"></div>
+      <div class="logo-slide"><img src="https://via.placeholder.com/200x100?text=Logo+6" alt="Logo 6"></div>
+      <div class="logo-slide"><img src="https://via.placeholder.com/200x100?text=Logo+7" alt="Logo 7"></div>
+      <div class="logo-slide"><img src="https://via.placeholder.com/200x100?text=Logo+8" alt="Logo 8"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const slider = document.getElementById('logoSlider');
+  let scrollAmount = 0;
+
+  const slide = () => {
+    const slideWidth = slider.querySelector('.logo-slide').offsetWidth + 30; // width + gap
+    const totalWidth = slider.scrollWidth;
+    const visibleWidth = slider.offsetWidth;
+
+    scrollAmount += slideWidth;
+
+    if (scrollAmount + visibleWidth > totalWidth) {
+      scrollAmount = 0; // reset
+    }
+
+    slider.style.transform = `translateX(-${scrollAmount}px)`;
+  };
+
+  setInterval(slide, 2000); // Slide every 2 seconds
+</script>
+
+</body>
+</html>

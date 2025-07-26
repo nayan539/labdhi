@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Company Logo Slider</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .logo-carousel .item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 120px;
+      border: 2px solid #ccc; /* default gray border */
+      border-radius: 8px;
+      background-color: #fff;
+      transition: border-color 0.3s ease;
+      padding: 10px;
+    }
+
+    .logo-carousel .item:hover {
+      border-color: #666; /* darker gray on hover */
+    }
+
+    .logo-carousel img {
+      max-height: 80px;
+      width: auto;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
+
+    .owl-carousel .owl-stage-outer {
+      padding: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+ <section>
+   <!-- Header -->
+  <header class="py-4 text-center bg-white shadow-sm">
+    <div class="container">
+      <h1 class="h3 mb-0 fw-bold">Our Trusted Partners</h1>
+    </div>
+  </header>
+
+  <!-- Logo Slider Section -->
+  <section class="py-5 logo-carousel bg-light">
+    <div class="container">
+      <div class="owl-carousel owl-theme">
+
+        <!-- Logo 1 -->
+        <div class="item">
+          <img src="./partners/Adani.png" alt="Logo 1" class="img-fluid">
+        </div>
+
+        <!-- Logo 2 -->
+        <div class="item">
+          <img src="./partners/amns.png" alt="Logo 2" class="img-fluid" />
+        </div>
+
+        <!-- Logo 3 -->
+        <div class="item">
+          <img src="./partners/L&T.png" alt="Logo 3" class="img-fluid" />
+        </div>
+
+        <!-- Logo 4 -->
+        <div class="item">
+          <img src="./partners/tata.png" alt="Logo 4" class="img-fluid" />
+        </div>
+
+        <!-- Logo 5 -->
+        <div class="item">
+          <img src="./partners/maruti.png" alt="Logo 5" class="img-fluid" />
+        </div>
+
+        <!-- Logo 6 -->
+        <div class="item">
+          <img src="./partners/birla/aditya-birla-group-seeklogo.png" alt="Logo 6" class="img-fluid" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+ </section>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Owl Carousel JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 30,
+        autoplay: true,
+        autoplayTimeout: 2000,
+        autoplayHoverPause: false,
+        nav: false,
+        dots: false,
+        responsive: {
+          0: {
+            items: 2
+          },
+          576: {
+            items: 3
+          },
+          992: {
+            items: 4
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

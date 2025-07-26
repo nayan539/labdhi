@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Responsive Navbar</title>
+
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <!-- Bootstrap CSS (optional, for your original CSS dependencies) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    /* Your original CSS extracted and adapted */
+    /* ... minimal essential styles shown here for demo; replace with your full CSS */
+    .site-header {
+      background: #fff;
+      position: relative;
+      border-bottom: 1px solid #ddd;
+    }
+    .site-header .container {
+      position: relative;
+      max-width: 1170px;
+      margin: 0 auto;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-logo img {
+      height: 40px;
+    }
+    #navbar {
+      transition: right 0.3s ease;
+    }
+    /* Desktop dropdown menus */
+    @media (min-width: 992px) {
+      #navbar {
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        border: none !important;
+        display: block !important;
+      }
+      #navbar ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+      #navbar ul li {
+        position: relative;
+        margin-right: 20px;
+      }
+      #navbar ul li a {
+        text-decoration: none;
+        color: #222;
+        font-size: 15px;
+        padding: 10px 0;
+        display: inline-block;
+      }
+      #navbar ul li:hover > ul.sub-menu {
+        visibility: visible;
+        opacity: 1;
+        top: 100%;
+      }
+      ul.sub-menu {
+        position: absolute;
+        background: #051829;
+        padding: 10px 0;
+        top: 120%;
+        left: 0;
+        min-width: 180px;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease, top 0.3s ease;
+        list-style: none;
+        border-radius: 0;
+        z-index: 1000;
+      }
+      ul.sub-menu li a {
+        color: #c3bfbf;
+        padding: 8px 20px;
+        display: block;
+      }
+      ul.sub-menu li a:hover {
+        background-color: #28557c;
+        color: #fff;
+      }
+    }
+
+    /* Mobile sidebar styles */
+    @media (max-width: 991px) {
+      .open-btn {
+        background-color: #051829;
+        border: none;
+        width: 40px;
+        height: 35px;
+        position: fixed;
+        right: 15px;
+        top: 15px;
+        z-index: 1050;
+        border-radius: 3px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .open-btn span {
+        background: #fff;
+        height: 3px;
+        margin: 4px 6px;
+        border-radius: 2px;
+      }
+      #navbar {
+        position: fixed !important;
+        top: 0;
+        right: -50%;
+        width: 50%;
+        height: 100%;
+        background: #fff;
+        border-left: 1px solid #ccc;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+        overflow-y: auto;
+        transition: right 0.3s ease;
+        z-index: 1040;
+        padding-top: 60px;
+      }
+      #navbar.slideInn {
+        right: 0 !important;
+      }
+      #navbar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      #navbar ul li {
+        border-bottom: 1px solid #ccc;
+      }
+      #navbar ul li a {
+        display: block;
+        padding: 12px 20px;
+        color: #000;
+        text-decoration: none;
+      }
+      #navbar ul li a:hover {
+        background-color: #f0f0f0;
+      }
+      #navbar ul li ul.sub-menu {
+        position: static;
+        background: transparent;
+        padding-left: 20px;
+        visibility: visible;
+        opacity: 1;
+        border: none;
+        box-shadow: none;
+      }
+
+      /* Close button inside sidebar */
+      .close-navbar {
+        position: absolute;
+        left: -45px;
+        top: 20px;
+        background: #051829;
+        border: none;
+        color: white;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        display: block;
+        z-index: 1060;
+      }
+
+      /* Hide close button on desktop */
+      @media (min-width: 992px) {
+        .close-navbar {
+          display: none !important;
+        }
+        .open-btn {
+          display: none !important;
+        }
+      }
+
+      /* Cart/Download button styles */
+      .cart-contact {
+        position: absolute;
+        right: 15px;
+        top: 60px;
+        z-index: 1060;
+      }
+      .cart-toggle-btn {
+        background: #051829;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 3px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      /* Keep cart button fixed on desktop */
+      @media (min-width: 992px) {
+        .cart-contact {
+          position: static;
+          top: auto;
+          right: auto;
+          z-index: auto;
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header navigation navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- Hamburger menu button for mobile -->
+        <button class="open-btn" aria-label="Open navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- Logo -->
+        <div class="site-logo">
+          <a href="#">
+            <img src="https://via.placeholder.com/150x40?text=Logo" alt="Logo" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Navbar menu -->
+      <nav id="navbar" class="navbar-collapse collapse navigation-holder navbar-right">
+        <button class="close-navbar" aria-label="Close navigation menu">&times;</button>
+        <ul class="nav navbar-nav">
+          <li><a href="#">Home</a></li>
+          <li class="menu-item-has-children">
+            <a href="#">Services</a>
+            <ul class="sub-menu dropdown-menu">
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Development</a></li>
+              <li><a href="#">SEO</a></li>
+            </ul>
+          </li>
+          <li class="menu-item-has-children">
+            <a href="#">About</a>
+            <ul class="sub-menu dropdown-menu">
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Download button on the right -->
+      <div class="cart-contact">
+        <button class="cart-toggle-btn">
+          <i class="fa fa-download"></i> Download
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Optional: Your page content here -->
+  <main style="padding: 20px;">
+    <h1>Welcome to the site!</h1>
+    <p>This page demonstrates a responsive navbar with desktop hover dropdowns and a mobile sidebar.</p>
+  </main>
+
+  <!-- jQuery (required for Bootstrap JS) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const openBtn = document.querySelector('.open-btn');
+      const nav = document.getElementById('navbar');
+      const closeBtn = document.querySelector('.close-navbar');
+
+      function isMobile() {
+        return window.innerWidth <= 991;
+      }
+
+      // Open sidebar on mobile
+      openBtn.addEventListener('click', (e) => {
+        if (isMobile()) {
+          e.preventDefault();
+          nav.classList.add('slideInn');
+        }
+      });
+
+      // Close sidebar on mobile
+      closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        nav.classList.remove('slideInn');
+      });
+
+      // Close sidebar if clicking outside it (mobile only)
+      document.addEventListener('click', (e) => {
+        if (
+          isMobile() &&
+          nav.classList.contains('slideInn') &&
+          !nav.contains(e.target) &&
+          !openBtn.contains(e.target)
+        ) {
+          nav.classList.remove('slideInn');
+        }
+      });
+
+      // Optional: handle window resize - close sidebar if desktop
+      window.addEventListener('resize', () => {
+        if (!isMobile() && nav.classList.contains('slideInn')) {
+          nav.classList.remove('slideInn');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

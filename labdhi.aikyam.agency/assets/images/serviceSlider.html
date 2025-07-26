@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services Slider with Bootstrap & Owl Carousel</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Owl Carousel CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+  />
+
+  <style>
+    .service-card {
+      position: relative;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      height: 280px;
+      transition: transform 0.3s ease;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .service-image {
+      object-fit: cover;
+      height: 220px;
+      width: 100%;
+      border-radius: 0.5rem 0.5rem 0 0;
+      flex-shrink: 0;
+    }
+
+    .service-title {
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #212529;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 10;
+      background-color: #f8f9fa;
+      border-radius: 0 0 0.5rem 0.5rem;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Overlay */
+    .service-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      background-color: rgba(13, 110, 253, 0.85); /* Bootstrap primary blue with opacity */
+      color: white;
+      overflow: hidden;
+      padding: 0 1rem;
+      border-radius: 0 0 0.5rem 0.5rem;
+      transition: height 0.5s ease, padding 0.5s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .service-card:hover .service-overlay {
+      height: 100%;
+      padding: 1rem;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .service-card:hover .service-title {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .service-overlay h3 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .service-overlay p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* Center dots container below the slider */
+.owl-dots {
+  text-align: center;  /* center horizontally */
+  margin-top: 15px;
+}
+
+/* Style each dot as a black circle */
+.owl-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background-color: #000;  /* black */
+  border-radius: 50%;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+/* Highlight active dot */
+.owl-dot.active {
+  opacity: 1;
+}
+
+
+  </style>
+</head>
+<body>
+  <section class="py-5">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="fw-bold">Our Services</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="owl-carousel owl-theme">
+
+            <!-- Service Item -->
+            <div class="service-card">
+              <img
+                src="https://via.placeholder.com/400x220?text=Solenoid+Valve"
+                alt="Solenoid Valve"
+                class="service-image"
+              />
+              <div class="service-title">
+                <i class="fi flaticon-construction"></i>
+                <a href="solenoid-valve-2.html" class="text-decoration-none text-dark flex-grow-1">
+                  Solenoid Valves
+                </a>
+              </div>
+              <div class="service-overlay">
+                <h3><i class="fi flaticon-construction"></i> Solenoid Valves</h3>
+                <p>
+                  Electromagnetic valves used for fluid control in automation systems. Available in multiple sizes and coil configurations.
+                </p>
+                <a href="solenoid-valve-2.html" class="btn btn-light btn-sm w-auto align-self-start">Get Details</a>
+              </div>
+            </div>
+
+            <!-- Service Item -->
+            <div class="service-card">
+              <img
+                src="https://via.placeholder.com/400x220?text=Pneumatic+Fittings"
+                alt="Pneumatic Fittings"
+                class="service-image"
+              />
+              <div class="service-title">
+                <i class="fi flaticon-construction"></i>
+                <a href="pneumatic-fittings-2.html" class="text-decoration-none text-dark flex-grow-1">
+                  Pneumatic Fittings
+                </a>
+              </div>
+              <div class="service-overlay">
+                <h3><i class="fi flaticon-construction"></i> Pneumatic Fittings</h3>
+                <p>
+                  Push-in and threaded fittings suitable for compressed air systems and automation lines. Leak-proof and durable.
+                </p>
+                <a href="pneumatic-fittings-2.html" class="btn btn-light btn-sm w-auto align-self-start">Get Details</a>
+              </div>
+            </div>
+
+            <!-- Service Item -->
+            <div class="service-card">
+              <img
+                src="https://via.placeholder.com/400x220?text=Pipe+Fittings"
+                alt="Pipe Fittings"
+                class="service-image"
+              />
+              <div class="service-title">
+                <i class="fi flaticon-construction"></i>
+                <a href="pipe-fittings-2.html" class="text-decoration-none text-dark flex-grow-1">
+                  Pipe Fittings
+                </a>
+              </div>
+              <div class="service-overlay">
+                <h3><i class="fi flaticon-construction"></i> Pipe Fittings</h3>
+                <p>
+                  Threaded and welded pipe fittings for industrial pipelines. Available in stainless steel, brass, and carbon steel.
+                </p>
+                <a href="pipe-fittings-2.html" class="btn btn-light btn-sm w-auto align-self-start">Get Details</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Owl Carousel JS -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+  ></script>
+
+  <script>
+    jQuery(document).ready(function () {
+      $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 20,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        nav: true,
+        dots: true,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          576: {
+            items: 2,
+          },
+          992: {
+            items: 3,
+          },
+        },
+      });
+    });
+  </script>
+</body>
+</html>
