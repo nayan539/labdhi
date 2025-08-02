@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Labdhi Engineering - Responsive Sidebar Menu</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<style>
+  /* Sidebar styles */
+  #sidebar {
+    position: fixed;
+    top: 0;
+    right: -80%;
+    width: 80%;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -3px 0 8px rgba(0,0,0,0.2);
+    overflow-y: auto;
+    transition: right 0.3s ease;
+    z-index: 9999;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #sidebar.active {
+    right: 0;
+  }
+
+  #sidebar .close-btn {
+    align-self: flex-end;
+    font-size: 28px;
+    cursor: pointer;
+    color: #333;
+    margin-bottom: 20px;
+    border: none;
+    background: none;
+  }
+
+  #sidebar ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  #sidebar ul li {
+    border-bottom: 1px solid #ccc;
+  }
+
+  #sidebar ul li a {
+    display: block;
+    padding: 12px 10px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  #sidebar ul li a:hover {
+    background: #f2f2f2;
+    color: #007bff;
+  }
+
+  /* Submenu hidden by default */
+  #sidebar ul li ul.sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding-left: 15px;
+    background: #fafafa;
+  }
+
+  /* When open, expand submenu */
+  #sidebar ul li.open > ul.sub-menu {
+    max-height: 2000px; /* large value for smooth expand */
+    border-top: 1px solid #ddd;
+  }
+
+  #sidebar ul li ul.sub-menu li {
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* Submenu toggle arrow */
+  #sidebar ul li.menu-item-has-children > a::after {
+    content: "\f105"; /* FontAwesome right arrow */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    float: right;
+    margin-right: 5px;
+    transition: transform 0.3s ease;
+  }
+
+  /* Rotate arrow when submenu open */
+  #sidebar ul li.open > a::after {
+    transform: rotate(90deg);
+  }
+
+  /* Hide sidebar on large screens */
+  @media (min-width: 992px) {
+    #sidebar {
+      display: none;
+    }
+  }
+
+  /* Show open button on small screens */
+  .open-btn {
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+    margin: 10px;
+    display: block;
+  }
+
+  @media (min-width: 992px) {
+    .open-btn {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<button class="open-btn" aria-label="Open Menu">&#9776; Menu</button>
+
+<nav id="sidebar" aria-hidden="true">
+  <button class="close-btn" aria-label="Close Menu">&times;</button>
+  <ul class="sidebar-menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+
+    <li class="menu-item-has-children">
+      <a href="#" class="toggle-submenu">Products</a>
+      <ul class="sub-menu">
+        <li><a href="Gear-Manufacturing.html">Gear Manufacturing</a></li>
+        <li><a href="Shaft-Manufacturing.html">Shaft Manufacturing</a></li>
+        <li><a href="Pulley.html">Pulley</a></li>
+        <li><a href="Timing-Belt-Pulley.html">Timing Belt Pulley</a></li>
+        <li><a href="Bracket.html">Bracket</a></li>
+        <li><a href="Spocket-Wheel.html">Spocket Wheel</a></li>
+        <li><a href="Dye-Moulding-Item.html">Dye Moulding Item</a></li>
+        <li><a href="Customised-Bolt.html">Customised Bolt</a></li>
+        <li><a href="Cyclone-Gear.html">Cyclone Gear</a></li>
+        <li><a href="Rack-Gear.html">Rack Gear</a></li>
+        <li><a href="Fabrication-Items.html">Fabrication Items</a></li>
+        <li><a href="Coating-Item.html">Coating Item</a></li>
+        <li><a href="Varum-Gear.html">Varum Gear</a></li>
+      </ul>
+    </li>
+
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+  $(function () {
+    // Open sidebar
+    $('.open-btn').click(function () {
+      $('#sidebar').addClass('active').attr('aria-hidden', 'false');
+    });
+
+    // Close sidebar
+    $('#sidebar .close-btn').click(function () {
+      $('#sidebar').removeClass('active').attr('aria-hidden', 'true');
+      $('#sidebar li.open').removeClass('open');
+    });
+
+    // Toggle submenu under Products
+    $('#sidebar').on('click', '.toggle-submenu', function (e) {
+      e.preventDefault();
+      var $li = $(this).parent('li');
+
+      if ($li.hasClass('open')) {
+        $li.removeClass('open');
+      } else {
+        // Close any other open submenus on same level (if any)
+        $li.siblings('.open').removeClass('open');
+        $li.addClass('open');
+      }
+    });
+
+    // Close sidebar if clicked outside
+    $(document).on('click touchstart', function (e) {
+      if ($('#sidebar').hasClass('active')) {
+        if (!$(e.target).closest('#sidebar, .open-btn').length) {
+          $('#sidebar').removeClass('active').attr('aria-hidden', 'true');
+          $('#sidebar li.open').removeClass('open');
+        }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

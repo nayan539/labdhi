@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Labdhi Engineering</title>
+
+  <!-- Favicon -->
+  <link href="assets/images/favicon/favicon.png" rel="shortcut icon" type="image/png" />
+
+  <!-- Bootstrap 3 CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Your existing styles -->
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="assets/css/flaticon.css" rel="stylesheet" />
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/css/animate.css" rel="stylesheet" />
+  <link href="assets/css/owl.carousel.css" rel="stylesheet" />
+  <link href="assets/css/slick.css" rel="stylesheet" />
+  <link href="assets/css/slick-theme.css" rel="stylesheet" />
+  <link href="assets/css/owl.transitions.css" rel="stylesheet" />
+  <link href="assets/css/jquery.fancybox.css" rel="stylesheet" />
+  <link href="assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
+  <link href="assets/css/style.css" rel="stylesheet" />
+
+  <style>
+    /* Carousel item styling */
+    #backgroundCarousel .carousel-inner > .item {
+      height: 80vh;
+      min-height: 300px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+    /* Overlay on carousel */
+    #backgroundCarousel .carousel-inner > .item::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    /* Caption styling */
+    #backgroundCarousel .carousel-caption {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+
+    /* Desktop images */
+    @media (min-width: 768px) {
+      #backgroundCarousel .item1 {
+        background-image: url('./assets/images/carousel/B1.jpg');
+      }
+      #backgroundCarousel .item2 {
+        background-image: url('./assets/images/carousel/B2.jpg');
+      }
+      #backgroundCarousel .item3 {
+        background-image: url('./assets/images/carousel/B3.jpg');
+      }
+      #backgroundCarousel .item4 {
+        background-image: url('./assets/images/carousel/B4.jpg');
+      }
+    }
+
+    /* Mobile images */
+    @media (max-width: 767px) {
+      #backgroundCarousel .item1 {
+        background-image: url('./assets/images/carousel/horizontal-BLack-1.jpg');
+      }
+      #backgroundCarousel .item2 {
+        background-image: url('./assets/images/carousel/horizontal-BLack-2.jpg');
+      }
+      #backgroundCarousel .item3 {
+        background-image: url('./assets/images/carousel/horizontal-BLack-3.jpg');
+      }
+      #backgroundCarousel .item4 {
+        background-image: url('./assets/images/carousel/horizontal-BLack-4.jpg');
+      }
+    }
+
+    /* Responsive sidebar styles */
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        display: none !important;
+      }
+      .navbar-header .open-btn {
+        display: block;
+        border: none;
+        background: transparent;
+        font-size: 22px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+    }
+
+    #sidebar {
+      position: fixed;
+      top: 0;
+      right: -80%;
+      width: 80%;
+      height: 100vh;
+      background: #fff;
+      box-shadow: -3px 0 8px rgba(0,0,0,0.2);
+      overflow-y: auto;
+      transition: right 0.3s ease;
+      z-index: 9999;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #sidebar.active {
+      right: 0;
+    }
+
+    #sidebar .close-btn {
+      align-self: flex-end;
+      font-size: 28px;
+      cursor: pointer;
+      color: #333;
+      margin-bottom: 20px;
+      border: none;
+      background: none;
+    }
+
+    #sidebar ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    #sidebar ul li {
+      border-bottom: 1px solid #ccc;
+    }
+
+    #sidebar ul li a {
+      display: block;
+      padding: 12px 10px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    #sidebar ul li a:hover {
+      background: #f2f2f2;
+      color: #007bff;
+    }
+
+    #sidebar ul li ul.sub-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding-left: 15px;
+      background: #fafafa;
+    }
+
+    #sidebar ul li.open > ul.sub-menu {
+      max-height: 1000px;
+      border-top: 1px solid #ddd;
+    }
+
+    #sidebar ul li ul.sub-menu li {
+      border-bottom: 1px solid #ddd;
+    }
+
+    #sidebar ul li ul.sub-menu li ul.sub-menu {
+      padding-left: 15px;
+    }
+
+    #sidebar ul li.menu-item-has-children > a::after {
+      content: "\f105";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      float: right;
+      margin-right: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    #sidebar ul li.open > a::after {
+      transform: rotate(90deg);
+    }
+
+    @media (min-width: 992px) {
+      #sidebar {
+        display: none;
+      }
+      .navbar-collapse {
+        display: block !important;
+      }
+      .navbar-header .open-btn {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header id="header" class="site-header header-style-4">
+  <div class="topbar topbar-style-2 desktop-only">
+    <div class="container">
+      <div class="row">
+        <div class="col col-sm-10">
+          <div class="topbar-contact-info-wrapper">
+            <div class="topbar-contact-info">
+              <div>
+                <i class="fa fa-location-arrow"></i>
+                <div class="details">
+                  <p>2nd Floor, 203, Loha Bhavan</p>
+                  <span>Income Tax, Navrangpura, Ahmedabad</span>
+                </div>
+              </div>
+              <div>
+                <i class="fa fa-phone"></i>
+                <div class="details">
+                  <p>+91 987 654 3210</p>
+                  <span>support@labdhiengineering.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-sm-2">
+          <div class="social">
+            <span>Follow: </span>
+            <ul class="social-links">
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+              <li><a href="#"><i class="fa fa-rss"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navigation navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="open-btn navbar-toggle collapsed" aria-label="Open Menu" aria-expanded="false">
+          <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+        <div class="site-logo">
+          <a href="index.html"><img src="assets/images/Labdhi.png" alt="Logo" /></a>
+        </div>
+      </div>
+
+      <div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
+        <button class="close-navbar"><i class="fa fa-close"></i></button>
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li class="menu-item-has-children">
+            <a href="#">Products</a>
+            <ul class="sub-menu dropdown-menu">
+              <li class="menu-item-has-children">
+                <a href="#">Machining Work</a>
+                <ul class="sub-menu">
+                  <li><a href="Gear-Manufacturing.html">Gear Manufacturing</a></li>
+                  <li><a href="Shaft-Manufacturing.html">Shaft Manufacturing</a></li>
+                  <li><a href="Pulley.html">Pulley</a></li>
+                  <li><a href="Timing-Belt-Pulley.html">Timing Belt Pulley</a></li>
+                  <li><a href="Bracket.html">Bracket</a></li>
+                  <li><a href="Spocket-Wheel.html">Spocket Wheel</a></li>
+                  <li><a href="Dye-Moulding-Item.html">Dye Moulding Item</a></li>
+                  <li><a href="Customised-Bolt.html">Customised Bolt</a></li>
+                  <li><a href="Cyclone-Gear.html">Cyclone Gear</a></li>
+                  <li><a href="Rack-Gear.html">Rack Gear</a></li>
+                  <li><a href="Fabrication-Items.html">Fabrication Items</a></li>
+                  <li><a href="Coating-Item.html">Coating Item</a></li>
+                  <li><a href="Varum-Gear.html">Varum Gear</a></li>
+                </ul>
+              </li>
+              <li><a href="Qrc-Nrv.html">QRC and NRV</a></li>
+              <li><a href="Tube-Fittings.html">Tube Fitting</a></li>
+              <li><a href="Needle-Valve.html">Needle Valve</a></li>
+              <li><a href="Solenoid-Valve.html">Solenoid Valve</a></li>
+              <li><a href="Pneumatic-Fittings.html">Pneumatic Fittings</a></li>
+              <li><a href="Pipe-Fittings.html">Pipe Fittings</a></li>
+              <li><a href="Pressure-Gauges.html">Pressure Gauges</a></li>
+              <li><a href="Valve.html">Valve</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile Sidebar -->
+<div id="sidebar" role="navigation" aria-label="Mobile Menu">
+  <button class="close-btn" aria-label="Close Menu" type="button">&times;</button>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li class="menu-item-has-children">
+      <a href="#" class="submenu-toggle" role="button" aria-expanded="false">Products</a>
+      <ul class="sub-menu">
+        <li class="menu-item-has-children">
+          <a href="#" class="submenu-toggle" role="button" aria-expanded="false">Machining Work</a>
+          <ul class="sub-menu">
+            <li><a href="Gear-Manufacturing.html">Gear Manufacturing</a></li>
+            <li><a href="Shaft-Manufacturing.html">Shaft Manufacturing</a></li>
+            <li><a href="Pulley.html">Pulley</a></li>
+            <li><a href="Timing-Belt-Pulley.html">Timing Belt Pulley</a></li>
+            <li><a href="Bracket.html">Bracket</a></li>
+            <li><a href="Spocket-Wheel.html">Spocket Wheel</a></li>
+            <li><a href="Dye-Moulding-Item.html">Dye Moulding Item</a></li>
+            <li><a href="Customised-Bolt.html">Customised Bolt</a></li>
+            <li><a href="Cyclone-Gear.html">Cyclone Gear</a></li>
+            <li><a href="Rack-Gear.html">Rack Gear</a></li>
+            <li><a href="Fabrication-Items.html">Fabrication Items</a></li>
+            <li><a href="Coating-Item.html">Coating Item</a></li>
+            <li><a href="Varum-Gear.html">Varum Gear</a></li>
+          </ul>
+        </li>
+        <li><a href="Qrc-Nrv.html">QRC and NRV</a></li>
+        <li><a href="Tube-Fittings.html">Tube Fitting</a></li>
+        <li><a href="Needle-Valve.html">Needle Valve</a></li>
+        <li><a href="Solenoid-Valve.html">Solenoid Valve</a></li>
+        <li><a href="Pneumatic-Fittings.html">Pneumatic Fittings</a></li>
+        <li><a href="Pipe-Fittings.html">Pipe Fittings</a></li>
+        <li><a href="Pressure-Gauges.html">Pressure Gauges</a></li>
+        <li><a href="Valve.html">Valve</a></li>
+      </ul>
+    </li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+
+<!-- Background Carousel -->
+<div id="backgroundCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
+  <div class="carousel-inner">
+    <div class="item item1 active">
+      <div class="carousel-caption">
+        <h1>Labdhi Engineering</h1>
+        <h2>Quality Engineering Since 1985</h2>
+      </div>
+    </div>
+    <div class="item item2">
+      <div class="carousel-caption">
+        <h1>Labdhi Engineering</h1>
+        <h2>Precision and Excellence</h2>
+      </div>
+    </div>
+    <div class="item item3">
+      <div class="carousel-caption">
+        <h1>Labdhi Engineering</h1>
+        <h2>Innovative Solutions for Industry</h2>
+      </div>
+    </div>
+    <div class="item item4">
+      <div class="carousel-caption">
+        <h1>Labdhi Engineering</h1>
+        <h2>Your Trusted Partner</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Your page content can go here -->
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    var $sidebar = $('#sidebar');
+
+    // Open sidebar when hamburger clicked
+    $('.open-btn').on('click', function () {
+      $sidebar.addClass('active');
+      $('body').css('overflow', 'hidden');
+      $(this).attr('aria-expanded', 'true');
+    });
+
+    // Close sidebar when close button clicked
+    $('.close-btn').on('click', function () {
+      $sidebar.removeClass('active');
+      $('body').css('overflow', 'auto');
+      $('.open-btn').attr('aria-expanded', 'false');
+    });
+
+    // Toggle submenu on clicking toggles in sidebar
+    $('#sidebar .menu-item-has-children > a.submenu-toggle').on('click', function (e) {
+      e.preventDefault();
+
+      var $parentLi = $(this).parent('li');
+
+      // Close siblings at same level
+      $parentLi.siblings('.open').removeClass('open').find('ul.sub-menu').slideUp()
+        .prev('a.submenu-toggle').attr('aria-expanded', 'false');
+
+      // Toggle this submenu
+      if ($parentLi.hasClass('open')) {
+        $parentLi.removeClass('open').find('ul.sub-menu').slideUp();
+        $(this).attr('aria-expanded', 'false');
+      } else {
+        $parentLi.addClass('open').children('ul.sub-menu').slideDown();
+        $(this).attr('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
