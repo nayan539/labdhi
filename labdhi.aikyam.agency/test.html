@@ -1,215 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Labdhi Engineering</title>
-
-  <!-- Favicon -->
-  <link href="assets/images/favicon/favicon.png" rel="shortcut icon" type="image/png" />
-
-  <!-- Bootstrap 3 CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Your existing styles -->
-  <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="assets/css/flaticon.css" rel="stylesheet" />
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="assets/css/animate.css" rel="stylesheet" />
-  <link href="assets/css/owl.carousel.css" rel="stylesheet" />
-  <link href="assets/css/slick.css" rel="stylesheet" />
-  <link href="assets/css/slick-theme.css" rel="stylesheet" />
-  <link href="assets/css/owl.transitions.css" rel="stylesheet" />
-  <link href="assets/css/jquery.fancybox.css" rel="stylesheet" />
-  <link href="assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
-  <link href="assets/css/style.css" rel="stylesheet" />
-
-  <style>
-    /* Carousel item styling */
-    #backgroundCarousel .carousel-inner > .item {
-      height: 80vh;
-      min-height: 300px;
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      position: relative;
-    }
-
-    /* Overlay on carousel */
-    #backgroundCarousel .carousel-inner > .item::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.3);
-      z-index: 1;
-    }
-
-    /* Caption styling */
-    #backgroundCarousel .carousel-caption {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      color: #fff;
-      text-shadow: 0 0 10px rgba(0,0,0,0.7);
-    }
-
-    /* Desktop images */
-    @media (min-width: 768px) {
-      #backgroundCarousel .item1 {
-        background-image: url('./assets/images/carousel/B1.jpg');
-      }
-      #backgroundCarousel .item2 {
-        background-image: url('./assets/images/carousel/B2.jpg');
-      }
-      #backgroundCarousel .item3 {
-        background-image: url('./assets/images/carousel/B3.jpg');
-      }
-      #backgroundCarousel .item4 {
-        background-image: url('./assets/images/carousel/B4.jpg');
-      }
-    }
-
-    /* Mobile images */
-    @media (max-width: 767px) {
-      #backgroundCarousel .item1 {
-        background-image: url('./assets/images/carousel/horizontal-BLack-1.jpg');
-      }
-      #backgroundCarousel .item2 {
-        background-image: url('./assets/images/carousel/horizontal-BLack-2.jpg');
-      }
-      #backgroundCarousel .item3 {
-        background-image: url('./assets/images/carousel/horizontal-BLack-3.jpg');
-      }
-      #backgroundCarousel .item4 {
-        background-image: url('./assets/images/carousel/horizontal-BLack-4.jpg');
-      }
-    }
-
-    /* Responsive sidebar styles */
-    @media (max-width: 991px) {
-      .navbar-collapse {
-        display: none !important;
-      }
-      .navbar-header .open-btn {
-        display: block;
-        border: none;
-        background: transparent;
-        font-size: 22px;
-        cursor: pointer;
-        margin-top: 10px;
-      }
-    }
-
-    #sidebar {
-      position: fixed;
-      top: 0;
-      right: -80%;
-      width: 80%;
-      height: 100vh;
-      background: #fff;
-      box-shadow: -3px 0 8px rgba(0,0,0,0.2);
-      overflow-y: auto;
-      transition: right 0.3s ease;
-      z-index: 9999;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    #sidebar.active {
-      right: 0;
-    }
-
-    #sidebar .close-btn {
-      align-self: flex-end;
-      font-size: 28px;
-      cursor: pointer;
-      color: #333;
-      margin-bottom: 20px;
-      border: none;
-      background: none;
-    }
-
-    #sidebar ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-      width: 100%;
-    }
-
-    #sidebar ul li {
-      border-bottom: 1px solid #ccc;
-    }
-
-    #sidebar ul li a {
-      display: block;
-      padding: 12px 10px;
-      color: #333;
-      text-decoration: none;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    #sidebar ul li a:hover {
-      background: #f2f2f2;
-      color: #007bff;
-    }
-
-    #sidebar ul li ul.sub-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      padding-left: 15px;
-      background: #fafafa;
-    }
-
-    #sidebar ul li.open > ul.sub-menu {
-      max-height: 1000px;
-      border-top: 1px solid #ddd;
-    }
-
-    #sidebar ul li ul.sub-menu li {
-      border-bottom: 1px solid #ddd;
-    }
-
-    #sidebar ul li ul.sub-menu li ul.sub-menu {
-      padding-left: 15px;
-    }
-
-    #sidebar ul li.menu-item-has-children > a::after {
-      content: "\f105";
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      float: right;
-      margin-right: 5px;
-      transition: transform 0.3s ease;
-    }
-
-    #sidebar ul li.open > a::after {
-      transform: rotate(90deg);
-    }
-
-    @media (min-width: 992px) {
-      #sidebar {
-        display: none;
-      }
-      .navbar-collapse {
-        display: block !important;
-      }
-      .navbar-header .open-btn {
-        display: none !important;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Labdhi Engineering</title>
+    <!-- Favicon -->
+    <link href="assets/images/favicon/favicon.png" rel="shortcut icon" type="image/png" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Carousel item styling */
+        #backgroundCarousel .carousel-inner > .item {
+            height: 80vh;
+            min-height: 300px;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        /* Overlay on carousel */
+        #backgroundCarousel .carousel-inner > .item::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        /* Caption styling */
+        #backgroundCarousel .carousel-caption {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0,0,0,0.7);
+        }
+        /* Brand items */
+        .brand-item {
+            margin-bottom: 30px; /* Vertical spacing */
+            width: 100%; /* Full width of the column */
+            height: 100px; /* Set a fixed height */
+            display: flex; /* Use CSS Flexbox for alignment */
+            justify-content: center; /* Center the image horizontally */
+            align-items: center; /* Center the image vertically */
+            overflow: hidden; /* Hide any overflow */
+        }
+        .brand-item img {
+            max-width: 100px; /* Set a fixed width for images */
+            max-height: 100%; /* Ensure the image does not exceed the height */
+            object-fit: contain; /* Maintain aspect ratio of images */
+        }
+    </style>
+    <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
-
-<!-- Navbar -->
 <header id="header" class="site-header header-style-4">
   <div class="topbar topbar-style-2 desktop-only">
     <div class="container">
@@ -238,29 +86,40 @@
           <div class="social">
             <span>Follow: </span>
             <ul class="social-links">
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-              <li><a href="#"><i class="fa fa-rss"></i></a></li>
+              <li>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-rss"></i></a>
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
-
   <nav class="navigation navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
-        <button type="button" class="open-btn navbar-toggle collapsed" aria-label="Open Menu" aria-expanded="false">
-          <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        <button type="button" class="open-btn navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
         <div class="site-logo">
-          <a href="index.html"><img src="assets/images/Labdhi.png" alt="Logo" /></a>
+          <a href="index.html"><img src="assets/images/Labdhi.png" alt="" /></a>
         </div>
       </div>
-
       <div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
         <button class="close-navbar"><i class="fa fa-close"></i></button>
         <ul class="nav navbar-nav">
@@ -270,8 +129,8 @@
             <a href="#">Products</a>
             <ul class="sub-menu dropdown-menu">
               <li class="menu-item-has-children">
-                <a href="#">Machining Work</a>
-                <ul class="sub-menu">
+                <a href="Machining-Work.html">Machining Work</a>
+                <ul class="sub-menu dropdown-menu">
                   <li><a href="Gear-Manufacturing.html">Gear Manufacturing</a></li>
                   <li><a href="Shaft-Manufacturing.html">Shaft Manufacturing</a></li>
                   <li><a href="Pulley.html">Pulley</a></li>
@@ -294,16 +153,38 @@
               <li><a href="Pneumatic-Fittings.html">Pneumatic Fittings</a></li>
               <li><a href="Pipe-Fittings.html">Pipe Fittings</a></li>
               <li><a href="Pressure-Gauges.html">Pressure Gauges</a></li>
-              <li><a href="Valve.html">Valve</a></li>
+              <li><a href="Pressure-Switch.html">Pressure Switch</a></li>
+              <li><a href="Burner-Spare.html">Burner Spare Parts</a></li>
+              <li>
+                <a href="Gas-Safety-Regulators.html">Gas Safety Regulators</a>
+              </li>
+              <li>
+                <a href="Lubricator-Air-Filter-Regulator.html">Lubricator Air Filter Regulator</a>
+              </li>
+              <li>
+                <a href="Pneumatic-Accessories.html">Pneumatic Accessories</a>
+              </li>
             </ul>
           </li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="brands.html">Brands</a></li>
         </ul>
       </div>
+      <!-- end of nav-collapse -->
+      <div class="cart-contact">
+        <div class="mini-cart">
+          <button class="cart-toggle-btn">
+            <a href="./assets/pdf/Labdh ProductS Catalog.pdf" download class="cart-toggle-btn">
+              <i class="fas fa-download"></i> Download
+            </a>
+          </button>
+        </div>
+      </div>
     </div>
+    <!-- end of container -->
   </nav>
+  <!-- end navigation -->
 </header>
-
 <!-- Mobile Sidebar -->
 <div id="sidebar" role="navigation" aria-label="Mobile Menu">
   <button class="close-btn" aria-label="Close Menu" type="button">&times;</button>
@@ -338,13 +219,12 @@
         <li><a href="Pneumatic-Fittings.html">Pneumatic Fittings</a></li>
         <li><a href="Pipe-Fittings.html">Pipe Fittings</a></li>
         <li><a href="Pressure-Gauges.html">Pressure Gauges</a></li>
-        <li><a href="Valve.html">Valve</a></li>
+        <li><a href="Pressure-Switch.html">Pressure Switch</a></li>
       </ul>
     </li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </div>
-
 <!-- Background Carousel -->
 <div id="backgroundCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
   <div class="carousel-inner">
@@ -373,53 +253,227 @@
       </div>
     </div>
   </div>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#backgroundCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#backgroundCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
-
-<!-- Your page content can go here -->
-
-<!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<!-- Brands Section -->
+<div class="container mt-5">
+  <h3 class="text-center mb-4">Our Brands</h3>
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/1.avif" alt="Brand 1" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/2.avif" alt="Brand 2" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/3.avif" alt="Brand 3" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/4.avif" alt="Brand 4" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/5.avif" alt="Brand 5" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/6.avif" alt="Brand 6" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/7.avif" alt="Brand 7" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/8.avif" alt="Brand 8" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/9.avif" alt="Brand 9" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/10.avif" alt="Brand 10" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/11.avif" alt="Brand 11" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/12.avif" alt="Brand 12" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/13.avif" alt="Brand 13" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/14.avif" alt="Brand 14" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/15.avif" alt="Brand 15" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/16.avif" alt="Brand 16" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/17.avif" alt="Brand 17" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/18.avif" alt="Brand 18" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/19.avif" alt="Brand 19" class="img-fluid" />
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="brand-item">
+        <img src="./assets/images/Brands/20.avif" alt="Brand 20" class="img-fluid" />
+      </div>
+    </div>
+    <!-- Repeat as needed for other brands -->
+  </div>
+</div>
+<!-- End brands -->
+<!-- Start site-footer -->
+<footer class="site-footer">
+    <div class="upper-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-3 col-sm-6">
+                    <div class="widget about-widget">
+                        <div class="footer-logo">
+                            <img src="assets/images/white.html" alt />
+                        </div>
+                        <ul class="contact-info">
+                            <li>
+                                <i class="fa fa-home"></i>
+                                2nd Floor, 203, Loha Bhavan Income Tax, Navrangpura,
+                                Ahmedabad
+                            </li>
+                            <li><i class="fa fa-phone"></i> +91 987 654 3210</li>
+                            <li>
+                                <i class="fa fa-home"></i> Working Hours: <br />Mon-Fri (9
+                                am - 8 pm)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col col-md-3 col-sm-6">
+                    <div class="widget service-links-widget">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="Machining-Work.html">⁠machining work</a></li>
+                            <li><a href="Solenoid-Valve.html">Solenoid Valve</a></li>
+                            <li>
+                                <a href="Pneumatic-Fittings.html">Pneumatic Fittings</a>
+                            </li>
+                            <li><a href="Pipe-Fittings.html">Pipe Fittings</a></li>
+                            <li><a href="Pressure-Gauges.html">Pressure Gauges</a></li>
+                            <li><a href="Pressure-Switch.html">Pressure Switch</a></li>
+                            <li><a href="Burner-Spare.html">Burner Spare Parts</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col col-md-3 col-sm-6">
+                    <div class="widget quick-links-widget">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Product</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-info">
+        <div class="container">
+            <p>
+                2025&copy; All Rights Reserved by Labdhi Engineering Private
+                Limited
+            </p>
+        </div>
+    </div>
+</footer>
+<!-- End site-footer -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script>
-  $(document).ready(function () {
-    var $sidebar = $('#sidebar');
-
-    // Open sidebar when hamburger clicked
-    $('.open-btn').on('click', function () {
-      $sidebar.addClass('active');
-      $('body').css('overflow', 'hidden');
-      $(this).attr('aria-expanded', 'true');
-    });
-
-    // Close sidebar when close button clicked
-    $('.close-btn').on('click', function () {
-      $sidebar.removeClass('active');
-      $('body').css('overflow', 'auto');
-      $('.open-btn').attr('aria-expanded', 'false');
-    });
-
-    // Toggle submenu on clicking toggles in sidebar
-    $('#sidebar .menu-item-has-children > a.submenu-toggle').on('click', function (e) {
-      e.preventDefault();
-
-      var $parentLi = $(this).parent('li');
-
-      // Close siblings at same level
-      $parentLi.siblings('.open').removeClass('open').find('ul.sub-menu').slideUp()
-        .prev('a.submenu-toggle').attr('aria-expanded', 'false');
-
-      // Toggle this submenu
-      if ($parentLi.hasClass('open')) {
-        $parentLi.removeClass('open').find('ul.sub-menu').slideUp();
-        $(this).attr('aria-expanded', 'false');
-      } else {
-        $parentLi.addClass('open').children('ul.sub-menu').slideDown();
-        $(this).attr('aria-expanded', 'true');
+  $(document).ready(function(){
+    $(".owl-carousel").owlCarousel({
+      items: 3,
+      margin: 30,
+      loop: true,
+      autoplay: true,
+      autoplayTimeout: 5500,
+      autoplayHoverPause: true,
+      nav: true,
+      dots: false,
+      responsive: {
+        0: { items: 1 },
+        600: { items: 2 },
+        1000: { items: 3 }
       }
     });
   });
+  const desktopSwiper = new Swiper(".desktop-only .hero-slider", {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+    },
+    speed: 800,
+    effect: "fade",
+  });
+  const mobileSwiper = new Swiper(".mobile-only .hero-slider", {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+    },
+    speed: 800,
+    effect: "fade",
+  });
 </script>
-
+<script src="assets/js/script.js"></script>
 </body>
 </html>
