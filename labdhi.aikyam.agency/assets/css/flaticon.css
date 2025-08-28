@@ -1,15 +1,15 @@
-	/*
-  	Flaticon icon font: Flaticon
-  	Creation date: 04/01/2018 05:35
-  	*/
+/*
+   Flaticon icon font: Flaticon
+   Creation date: 04/01/2018 05:35
+*/
 
 @font-face {
   font-family: "Flaticon";
-  src: url("../fonts/Flaticon.html");
-  src: url("../fonts/Flaticond41dd41d.html?#iefix") format("embedded-opentype"),
-       url("../fonts/Flaticon-2.html") format("woff"),
-       url("../fonts/Flaticon-3.html") format("truetype"),
-       url("../fonts/Flaticon-4.html#Flaticon") format("svg");
+  src: url("../fonts/Flaticon.eot");
+  src: url("../fonts/Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/Flaticon.woff") format("woff"),
+       url("../fonts/Flaticon.ttf") format("truetype"),
+       url("../fonts/Flaticon.svg#Flaticon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -17,18 +17,21 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: "Flaticon";
-    src: url("../fonts/Flaticon-4.html#Flaticon") format("svg");
+    src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
   }
 }
 
-[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
-[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after,
+[class*=" flaticon-"]:after {
   font-family: Flaticon;
-        font-size: 20px;
-font-style: normal;
-margin-left: 20px;
+  font-size: 20px;
+  font-style: normal;
+  margin-left: 20px;
 }
 
+/* Icon mappings */
 .flaticon-medal:before { content: "\f100"; }
 .flaticon-title:before { content: "\f101"; }
 .flaticon-left-quotes-sign:before { content: "\f102"; }

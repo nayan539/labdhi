@@ -1,25 +1,65 @@
-const openBtn = document.getElementById('openSidebarBtn');
-  const closeBtn = document.getElementById('sidebarCloseBtn');
-  const sidebar = document.getElementById('sidebarMenu');
 
-  openBtn.addEventListener('click', () => {
-    sidebar.classList.add('active');
-    sidebar.setAttribute('aria-hidden', 'false');
+document.addEventListener("DOMContentLoaded", function () {
+  const openBtn = document.querySelector(".navbar-toggle.open-btn");
+  const navMenu = document.querySelector(".navigation-holder");
+  const closeBtn = document.querySelector(".close-navbar");
+
+  if (openBtn && navMenu && closeBtn) {
+    openBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      navMenu.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      navMenu.classList.remove("active");
+    });
+  }
+
+  const mobileBreakpoint = 991;
+  if (window.innerWidth <= mobileBreakpoint) {
+    const dropdownAnchors = document.querySelectorAll(
+      ".navigation-holder li.menu-item-has-children > a"
+    );
+
+    dropdownAnchors.forEach(function (anchor) {
+      anchor.addEventListener("click", function (e) {
+        const parentLi = this.parentElement;
+        const submenu = parentLi.querySelector(".sub-menu");
+
+        if (submenu) {
+          e.preventDefault();
+
+          // Close other open submenus (same level)
+          const siblingLis = Array.from(parentLi.parentElement.children);
+          siblingLis.forEach(function (sibling) {
+            if (sibling !== parentLi) {
+              sibling.classList.remove("open");
+            }
+          });
+
+          // Toggle current submenu
+          parentLi.classList.toggle("open");
+        }
+      });
+    });
+  }
+});
+
+
+
+  // swiper
+   var swiper = new Swiper('.hero-slider', {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
   });
-
-  closeBtn.addEventListener('click', () => {
-    sidebar.classList.remove('active');
-    sidebar.setAttribute('aria-hidden', 'true');
-  });
-
-  // Optional: close sidebar if user clicks outside it
-  window.addEventListener('click', (e) => {
-    if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && e.target !== openBtn) {
-      sidebar.classList.remove('active');
-      sidebar.setAttribute('aria-hidden', 'true');
-    }
-  });
-
 
   // comapnies
  jQuery(document).ready(function () {
